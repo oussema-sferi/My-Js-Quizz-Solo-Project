@@ -2,13 +2,58 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>My Quizz!</title>
+        <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+
+    	<div id = "welcome" class="hidden">
+
+    		<h1>Welcome to My DeV Quizz Application</h1>	
+
+    		<p id="writer"></p>
+
+    		<button id="start">Start</button>
+    		
+    	</div>
+
+
+
+
+
+
+
+
+    	<div id = "quizz" class="hidden"> 
+
+
+    		<div class = "questions">Questions</div>	
+
+    		<div class = "progbarcontainer"><div class = "progressbar"></div></div>
+
+    		
+    		<form>
+    			<input class="a" type="radio" name="answ" value="a" checked="false">
+    			<label id ="1"></label><br>
+    			<input class="b" type="radio" name="answ" value="b" checked="false">
+    			<label id ="2"></label><br>
+    			<input class="c" type="radio" name="answ" value="c" checked="false">
+    			<label id ="3"></label><br>
+    			<input class="d" type="radio" name="answ" value="d" checked="false">
+    			<label id ="4"></label><br>
+    			<input class="next" type="button" value="Next">
+    		</form>
+    	</div>
       
+
+      <div id="popup">
+      	<h2>Congratulations</h2>
+      	  <p>Lorem ipsum dolor sit amet consectetur, adipiscing elit lacinia mus, sapien nibh imperdiet tempus. Vitae massa semper mi sagittis a cum cursus fusce per, gravida tellus metus purus litora nam ultricies donec, nibh dis ligula ad facilisi penatibus condimentum aenean.</p>
+      </div>
       
         <script src = "js/jquery-3.5.0.min.js"></script>
         <script src = "js/plugins.js"></script>
+        <script src = "js/main.js"></script>
     </body>
 </html>
