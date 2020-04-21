@@ -14,7 +14,7 @@ $("#welcome").fadeIn(2000, function() {
 			clearInterval(typeWriter);
 			$("#start").fadeIn(2000);
 		}
-	},5);
+	},1);
 	
 });
 
@@ -71,6 +71,9 @@ var quizz = [
 
 	];
 
+
+
+
 var userAnswers = [];
 
 function generateRandomIndex() {
@@ -86,14 +89,17 @@ var x = generateRandomIndex()
 
 $(".next").click(function() {
 	// var x = generateRandomIndex();
-
+	
 	var c =$("input[type='radio'][name='answ']:checked").val();
 	$("input[type='radio']").prop("checked", false); //reset the radio buttons
 
 	userAnswers.push(c); // add the answer of the user to the userAnswers array
 
-	$(".progressbar").animate({width:"+=" + ((1/quizz.length) * 100) + "%"}, 700); // the advancement of the progress bar
-
+	$(".progressbar").addClass("rightpos").animate({width:"+=" + ((1/quizz.length) * 100) + "%"}, 700, function() {
+		$(this).html("<span>" + (($(".progressbar").width()) / ($(".progbarcontainer").width()))*100 + "%</span>");
+	}); // the advancement of the progress bar
+	
+	
 			if(counterQuest < quizz.length) {
 			// the export of the question and answers from the quizz array to the html quizz form
 				$(".questions").html(quizz[counterQuest].question);

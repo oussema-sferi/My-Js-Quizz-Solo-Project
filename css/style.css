@@ -119,3 +119,6 @@ button.seeresult {  /*button seeresult*/
 	font-size: 30px; 
 }
 
+.rightpos {
+	text-align: right;
+}
