@@ -8,6 +8,15 @@
     </head>
     <body>
 
+    	<!-- 	Start page beginning -->
+
+    	<div id="startpage" class="hidden">
+      	<button>START</button>
+      </div>
+
+      <!-- 	Start page end -->
+
+
     <!-- 	Welcome page beginning -->
 
     	<div id = "welcome" class="hidden">
@@ -16,7 +25,7 @@
 
     		<p id="writer"></p>
 
-    		<button id="start">Start</button>
+    		<button id="go">Let's Go!</button>
     		
     	</div>
 
@@ -31,7 +40,9 @@
     	<div id = "quizz" class="hidden"> 
 
     		
-    		<div class = "questions">Questions</div>	
+    		<div class = "questions">Questions</div>
+
+    		<div id="elapsedtime"></div>
 
     		<div class = "progbarcontainer"><div class = "progressbar"></div></div>
 
@@ -56,8 +67,9 @@
     	<!-- 	Final page beginning -->
 
       <div id="final" class="hidden">
-      	<h1>Your Final Score Is:</h1>
+      		<h1>Your Final Score Is:</h1>
       	  <p></p>
+      	  <button class="hidden">Retry</button>
       </div>
       
 

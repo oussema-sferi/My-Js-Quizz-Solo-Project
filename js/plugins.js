@@ -12,18 +12,37 @@ $("#welcome").fadeIn(1000, function() {
 		z++;
 		if(z > myWelcomeText.length - 1) {
 			clearInterval(typeWriter);
-			$("#start").fadeIn(1000);
+			$("#go").fadeIn(1000);
 		}
-	},1);
+	},5);
 	
 });
 
-$("#start").click(function() {
+///////////// timer
+
+$("#go").click(function() {
+
+
+	var time = setInterval(function() {
+		seconds ++;
+		document.getElementById("elapsedtime").textContent = seconds;	
+		
+		if(userAnswers.length === quizz.length) {
+			clearInterval(time);		
+		}
+	},1000);
+	
+
+
+
+
+
+
 
 	var c =$("input[type='radio'][name='answ']:checked").val();
 	$("input[type='radio']").prop("checked", false); //reset the radio buttons
 	$("#welcome").fadeOut();
-	$("#quizz").fadeIn(3000, function() {
+	$("#quizz").slideDown(2000, function() {
 
 	$(".questions").html("Question 1/" + quizz.length + ": " + quizz[0].question);
 	$("#1").html(quizz[0].answers.a);
@@ -38,6 +57,9 @@ $("#start").click(function() {
 
 
 // Timer function
+
+
+var seconds = 0;
 
 
 
@@ -82,11 +104,7 @@ var quizz = [
 
 var userAnswers = [];
 
-function generateRandomIndex() {
- 	return Math.floor(Math.random() * quizz.length);
-}
 
-var x = generateRandomIndex()
 
  var $quest = $(".questions"); 
  var $answers = $(".answers");
@@ -138,6 +156,7 @@ $(".next").click(function() {
 				// 	$("#final").fadeIn(1000);
 				// })
 				$(this).fadeOut();
+				$("#elapsedtime").fadeOut();
 				$(".progressbar").after("<h2 style='padding: 20px;font-size: 30px;text-align: center;'>100% Completed</h2>");
 				$(".a, .b, .c, .d, label, .questions").remove();
 				$(".seeresult").fadeIn(2000).css({"font-size": "30px", "padding": "25px 0"}).animate({width: "100%"}, 2500);
@@ -165,12 +184,43 @@ return result;
 
 
 $(".seeresult").click(function() {
+	var resultMessage;
+	var scorePercent = (userScore()/quizz.length) * 100;
 	$("#quizz").fadeOut();
 	$("#final").fadeIn(2500);
 	$("#final p").html(userScore() + " Out Of " + quizz.length);
-	$("#final p").append("<p>" + (userScore()/quizz.length)*100 + "% of right answers</p>");
+////////////
+	if(scorePercent >= 80) {
+		resultMessage = "Congratulations! you look a senior skilled developer";
+	} else if(scorePercent < 80 && scorePercent >= 50) {
+		resultMessage = "Medium! You must improve your skills a little bit";
+	} else {
+		resultMessage = "Unfortunately! You must work more on your technical skills";
+	}
+////////////////
+	$("#final p").append("<p>" + scorePercent + "% of right answers</p><p>" + resultMessage + "</p>");
+	$("#final button").show();
+	
 })
 
+$("#final button").click(function() {
+	seconds = 0;
+	userAnswers = [];
+	var c =$("input[type='radio'][name='answ']:checked").val();
+	$("input[type='radio']").prop("checked", false); //reset the radio buttons
+
+	$("#final").fadeOut();
+	$("#quizz").slideDown(3000, function() {
+
+	$(".questions").html("Question 1/" + quizz.length + ": " + quizz[0].question);
+	$("#1").html(quizz[0].answers.a);
+	$("#2").html(quizz[0].answers.b);
+	$("#3").html(quizz[0].answers.c);
+	$("#4").html(quizz[0].answers.d);
+
+	});
+
+})
 
 
 

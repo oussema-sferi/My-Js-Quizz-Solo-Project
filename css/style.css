@@ -27,7 +27,7 @@ p {
 	margin-bottom: 5px;
 }
 
-button#start {
+button#go {
 	width: 180px;
 	padding: 8px;
 	border-radius: 10px;
@@ -48,6 +48,10 @@ button#start {
 	background-color: white;
 	opacity: 0.9;
 	height: 287px;
+}
+
+#elapsedtime {
+	float: right;
 }
 
 .questions {
@@ -117,6 +121,18 @@ button.seeresult {  /*button seeresult*/
 #final h1 {
 	padding: 20px;	
 	font-size: 30px; 
+}
+
+#final button {
+	width: 250px;
+	padding: 7px 8px;
+	margin: 5px auto;
+	border-radius: 10px;
+	background-color: green;
+	font-weight: bold;
+	font-size: 25px;
+	font-family: Alegreya;
+	color: white;	
 }
 
 .rightpos {
