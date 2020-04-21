@@ -88,6 +88,21 @@ form {
 	font-size: 20px;
 }
 
+button.seeresult {  /*button seeresult*/
+	width: 100px;
+	padding: 5px 8px;
+	margin: 0 5px 5px 0;
+	border-radius: 10px;
+	float: right;
+	background-color: cyan;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 20px;
+	font-family: Alegreya;
+	background: none;
+
+}
+
 #final {
 	margin: 100px auto;
 	border: 2px solid black;
@@ -103,3 +118,4 @@ form {
 	padding: 20px;	
 	font-size: 30px; 
 }
+
