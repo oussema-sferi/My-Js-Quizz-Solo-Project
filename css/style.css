@@ -30,6 +30,7 @@ p {
 button#go {
 	width: 180px;
 	padding: 8px;
+	border: 1px solid black;
 	border-radius: 10px 10px 0 0;
 	background-color: gray;
 	font-style: italic;
@@ -102,10 +103,11 @@ form {
 	margin-top: 37px;
 }
 
-button.seeresult {  /*button seeresult*/
+#movetoresult {  /*button seeresult*/
 	width: 100px;
 	padding: 5px 8px;
-	margin: 0 5px 5px 0;
+	margin-top: 140px;
+	border: 2px solid black;
 	border-radius: 10px;
 	float: right;
 	background-color: cyan;
@@ -133,7 +135,7 @@ button.seeresult {  /*button seeresult*/
 	font-size: 30px; 
 }
 
-#final button {
+#retry {
 	width: 250px;
 	padding: 7px 8px;
 	margin: 5px auto;

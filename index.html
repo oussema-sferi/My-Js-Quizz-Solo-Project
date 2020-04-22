@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>My Quizz!</title>
+        <title>MyDeV Quizz!</title>
         <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -16,20 +16,13 @@
 
       <!-- 	Timer end -->
 
-    	<!-- 	Start page beginning -->
-
-    	<div id="startpage" class="hidden">
-      	<button>START</button>
-      </div>
-
-      <!-- 	Start page end -->
 
 
     <!-- 	Welcome page beginning -->
 
     	<div id = "welcome" class="hidden">
 
-    		<h1>Welcome to My DeV Quizz Application</h1>	
+    		<h1>Welcome to MyDeV Quizz Application</h1>	
 
     		<p id="writer"></p>
 
@@ -52,7 +45,7 @@
 
     		<div class = "progbarcontainer"><div class = "progressbar"></div></div>
 
-    		
+
     		
     		<form>
     			<input class="a" type="radio" name="answ" value="a" checked="false">
@@ -64,8 +57,9 @@
     			<input class="d" type="radio" name="answ" value="d" checked="false">
     			<label id ="4"></label><br>
     			<input class="next" type="button" value="Next" disabled = "true">
+    			
     		</form>
-    			<button class="seeresult hidden">I Wanna See My Score</button>
+    			<button id ="movetoresult" class="hidden">I Wanna See My Score</button>
     	</div>
       
     	<!-- 	Quizz page end -->
@@ -76,7 +70,7 @@
       <div id="final" class="hidden">
       		<h1>Your Final Score Is:</h1>
       	  <p></p>
-      	  <button class="hidden">Retry</button>
+      	  <button id="retry" class="hidden">Retry</button>
       </div>
       
 

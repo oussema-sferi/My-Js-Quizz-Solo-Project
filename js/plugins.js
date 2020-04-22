@@ -1,10 +1,10 @@
 // Welcome page beginning:
 
-var myWelcomeText = "This is a Web Development Front-end Quizz so that you can test your Html, Css and Javascript skills. Are you a beginner, a junior or a senior developer? Let's see :)";
+var myWelcomeText = "This is a Web Development Front-end Quizz so that you can test your Javascript and jQuery skills. Are you a beginner, a junior or a senior developer? Let's see :)";
 var z = 0;
 
 
-$("#welcome").fadeIn(1000, function() {
+$("#welcome").fadeIn(5000, function() {
 
 	var typeWriter = setInterval(function() {
 
@@ -12,9 +12,9 @@ $("#welcome").fadeIn(1000, function() {
 		z++;
 		if(z > myWelcomeText.length - 1) {
 			clearInterval(typeWriter);
-			$("#go").fadeIn(1000);
+			$("#go").fadeIn(3500);
 		}
-	},5);
+	},80);
 	
 });
 
@@ -71,29 +71,70 @@ var quizz = [
 },
 
 {
-	question: "What's your name?",
-	answers: {a: "msgBox('Programming Languages')", b: "ahmed",c: "salma",d: "elyes"},
-	rightAnswer: "a"
+	question: "How do you create a function in JavaScript?",
+	answers: {a: "function = myFunction", b: "function:myFunction",c: "function myFunction",d: "function(myFunction)"},
+	rightAnswer: "c"
 },
 
 {
-	question: "Where are you from?",
-	answers: {a: "france", b: "united kingdom",c: "libya",d: "tunisia"},
-	rightAnswer: "d"
-},
-
-{
-	question: "What's Jquery?",
-	answers: {a: "programming language", b: "library",c: "framework",d: "markup language"},
+	question: "Which of the below is used in Javascript to insert special characters?",
+	answers: {a: "&", b: "\\",c: "-",d: "%"},
 	rightAnswer: "b"
 },
 
 {
-	question: "How many seconds in one hour?",
-	answers: {a: 780, b: 2100,c: 3600,d: 4000},
-	rightAnswer: "c"
-}
+	question: "What's Jquery?",
+	answers: {a: "programming language", b: "Javascript library",c: "Javascript framework",d: "markup language"},
+	rightAnswer: "b"
+},
 
+{
+	question: "Which of the following is correct to write 'Keep trying' on the web page using Javascript?",
+	answers: {a: "System.out.println('Keep trying')", b: "print('Keep trying')",c: "document.write('Keep trying')",d: "response.write('Keep trying')"},
+	rightAnswer: "c"
+},
+
+{
+	question: "Which attribute needs to be changed to make elements invisible?",
+	answers: {a: "visibile", b: "visibilty",c: "invisibility",d: "invisible"},
+	rightAnswer: "b"
+},
+
+{
+	question: "How to append a value to an array of Javascript?",
+	answers: {a: "arr[arr.length] = value", b: "arr[arr.length+1] = new Arrays()",c: "arr[arr.length-1] = value",d: "arr[arr.length*1] = value"},
+	rightAnswer: "a"
+},
+
+{
+	question: "How do you transform the number 7.25 to its nearest greater integer?",
+	answers: {a: "Math.floor(7.25)", b: "Math.ceil(7.25)",c: "Math.round(7.25)",d: "Math.pow(7.25)"},
+	rightAnswer: "b"
+},
+
+{
+	question: "Which event occurs when the user clicks on an HTML element?",
+	answers: {a: "onclick", b: "onmouseclick",c: "onmouseover",d: "onchange"},
+	rightAnswer: "a"
+},
+
+{
+	question: "What would be the result of 'typeof [ ]' in the console?",
+	answers: {a: "'array'", b: "'collection'",c: "'NaN'",d: "'object'"},
+	rightAnswer: "d"
+},
+
+{
+	question: "We use element1.append(element2) in jQuery to?",
+	answers: {a: "add element1 to the end of element2 ", b: "add element2 to the beginning of element1",c: "add element1 just after element2",d: "add element2 to the end of element1"},
+	rightAnswer: "d"
+},
+
+{
+	question: "How to create a copy of this array: numbers = [3,22,6,8] and assign it to another variable?",
+	answers: {a: "var c = numbers.splice()", b: "var s = numbers.copy()",c: "var j = numbers",d: "var z = numbers.slice()"},
+	rightAnswer: "d"
+}
 	];
 
 
@@ -129,7 +170,7 @@ $(".next").click(function() {
 	userAnswers.push(c); // add the answer of the user to the userAnswers array
 
 	$(".progressbar").addClass("rightpos").animate({width:"+=" + ((1/quizz.length) * 100) + "%"}, 700, function() {
-		$(this).html("<span>" + (($(".progressbar").width()) / ($(".progbarcontainer").width()))*100 + "%</span>");
+		$(this).html("<span>" + Math.round((($(".progressbar").width()) / ($(".progbarcontainer").width()))*100) + "%</span>");
 	}); // the advancement of the progress bar
 	
 			var numQ = counterQuest + 1;
@@ -155,8 +196,8 @@ $(".next").click(function() {
 				$(this).fadeOut();
 				$("#elapsedtime").css('visibility','hidden');
 				$(".progressbar").after("<h2 style='padding: 20px;font-size: 30px;text-align: center;'>100% Completed</h2>");
-				$(".a, .b, .c, .d, label, .questions").remove();
-				$(".seeresult").fadeIn(2000).css({"font-size": "30px", "padding": "25px 0"}).animate({width: "100%"}, 2500);
+				$(".a, .b, .c, .d, label, .questions, form").remove();
+				$("#movetoresult").fadeIn(2000).css({"font-size": "30px", "padding": "25px 0", "width": "100%"});
 			}
 	
  })
@@ -191,7 +232,7 @@ function convertToMin(x) {
 		return Math.floor(x / 60) + " minutes and " + (x % 60) + " seconds";
 }
 
-$(".seeresult").click(function() {
+$("#movetoresult").click(function() {
 	var resultMessage;
 	var scorePercent = (userScore()/quizz.length) * 100;
 	$("#quizz").fadeOut();
@@ -206,12 +247,12 @@ $(".seeresult").click(function() {
 		resultMessage = "Unfortunately! You must work more on your technical skills";
 	}
 ////////////////
-	$("#final p").append("<p>" + scorePercent + "% of right answers</p><p>" + resultMessage + "</p>");
+	$("#final p").append("<p>" + Math.round(scorePercent) + "% of right answers</p><p>" + resultMessage + "</p>");
 	$("#final button").show();
 	
 })
 
-$("#final button").click(function() {
+$("#retry").click(function() {
 	
 	location.reload();
 
