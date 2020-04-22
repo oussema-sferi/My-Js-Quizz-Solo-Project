@@ -25,18 +25,13 @@ $("#go").click(function() {
 
 	var time = setInterval(function() {
 		seconds ++;
-		document.getElementById("elapsedtime").textContent = seconds;	
+		document.getElementById("elapsedtime").textContent = "Elapsed time: " + seconds;	
 		
 		if(userAnswers.length === quizz.length) {
 			clearInterval(time);		
 		}
 	},1000);
 	
-
-
-
-
-
 
 
 	var c =$("input[type='radio'][name='answ']:checked").val();
@@ -51,6 +46,8 @@ $("#go").click(function() {
 	$("#4").html(quizz[0].answers.d);
 
 	});
+
+	$("#elapsedtime").slideDown(1000);
 })
 
 // Welcome page end:
@@ -59,7 +56,7 @@ $("#go").click(function() {
 // Timer function
 
 
-var seconds = 0;
+var seconds = -1;
 
 
 
@@ -68,14 +65,14 @@ var seconds = 0;
 
 var quizz = [
 {
-	question: "How old are you?",
-	answers: {a: 31, b: 32,c: 33,d: 34},
-	rightAnswer: "a"
+	question: "How do you write 'Programming Languages' in an alert box?",
+	answers: {a: "msgBox('Programming Languages')", b: "alert('Programming Languages')",c: "alertBox('Programming Languages')",d: "msg('Programming Languages')"},
+	rightAnswer: "b"
 },
 
 {
 	question: "What's your name?",
-	answers: {a: "oussema", b: "ahmed",c: "salma",d: "elyes"},
+	answers: {a: "msgBox('Programming Languages')", b: "ahmed",c: "salma",d: "elyes"},
 	rightAnswer: "a"
 },
 
@@ -156,7 +153,7 @@ $(".next").click(function() {
 				// 	$("#final").fadeIn(1000);
 				// })
 				$(this).fadeOut();
-				$("#elapsedtime").fadeOut();
+				$("#elapsedtime").css('visibility','hidden');
 				$(".progressbar").after("<h2 style='padding: 20px;font-size: 30px;text-align: center;'>100% Completed</h2>");
 				$(".a, .b, .c, .d, label, .questions").remove();
 				$(".seeresult").fadeIn(2000).css({"font-size": "30px", "padding": "25px 0"}).animate({width: "100%"}, 2500);
@@ -183,12 +180,23 @@ return result;
 }
 
 
+
+function convertToMin(x) {
+
+	if(x < 60) {
+		return x + " seconds"
+	} else if(x >= 60 && x < 119) {
+		return Math.floor(x / 60) + " minute and " + (x % 60) + " seconds";
+	} 
+		return Math.floor(x / 60) + " minutes and " + (x % 60) + " seconds";
+}
+
 $(".seeresult").click(function() {
 	var resultMessage;
 	var scorePercent = (userScore()/quizz.length) * 100;
 	$("#quizz").fadeOut();
 	$("#final").fadeIn(2500);
-	$("#final p").html(userScore() + " Out Of " + quizz.length);
+	$("#final p").html(userScore() + " Out Of " + quizz.length + " in " + convertToMin(seconds));
 ////////////
 	if(scorePercent >= 80) {
 		resultMessage = "Congratulations! you look a senior skilled developer";
@@ -204,21 +212,8 @@ $(".seeresult").click(function() {
 })
 
 $("#final button").click(function() {
-	seconds = 0;
-	userAnswers = [];
-	var c =$("input[type='radio'][name='answ']:checked").val();
-	$("input[type='radio']").prop("checked", false); //reset the radio buttons
-
-	$("#final").fadeOut();
-	$("#quizz").slideDown(3000, function() {
-
-	$(".questions").html("Question 1/" + quizz.length + ": " + quizz[0].question);
-	$("#1").html(quizz[0].answers.a);
-	$("#2").html(quizz[0].answers.b);
-	$("#3").html(quizz[0].answers.c);
-	$("#4").html(quizz[0].answers.d);
-
-	});
+	
+	location.reload();
 
 })
 

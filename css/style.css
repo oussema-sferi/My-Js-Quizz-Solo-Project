@@ -30,7 +30,7 @@ p {
 button#go {
 	width: 180px;
 	padding: 8px;
-	border-radius: 10px;
+	border-radius: 10px 10px 0 0;
 	background-color: gray;
 	font-style: italic;
 	font-weight: bold;
@@ -39,43 +39,51 @@ button#go {
 	display: none;
 }
 
+#elapsedtime {
+	text-align: center;
+	background-color: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);	
+	border: 1px solid black;
+	border-radius: 10px 10px 0 0;
+	width: 600px;
+	margin: 80px auto 0;
+	font-size: 40px;
+}
+
 #quizz {
-	margin: 100px auto;
+	margin: auto;
 	border: 2px solid black;
 	width: 600px;
 	overflow: hidden;
-	border-radius: 10px;
+	border-radius: 0 0 10px 10px;
 	background-color: white;
 	opacity: 0.9;
-	height: 287px;
+	height: 298px;
 }
 
-#elapsedtime {
-	float: right;
-}
 
 .questions {
 	padding: 20px;	
-	font-size: 30px;
+	font-size: 19px;
+	height: 10%;
 }
 
 .progbarcontainer {
 	margin: 15px 0;
 	height: 25px;
 	background-color: gray;
-	border-radius: 8px;
+	border-radius: 0 8px 8px 0;
 }
 .progressbar {
 
 	width: 0%;
 	height: 100%;
-	background-color: #008000;
-	border-radius: 0 10px 10px 0;
+	background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,165,0,1) 35%, rgba(65,255,0,1) 100%);
+	border-radius: 0 8px 8px 0;
 }
 
 .next {  /*button next*/
 	width: 100px;
-	padding: 5px 8px;
+	padding: 3px 8px;
 	margin: 0 5px 5px 0;
 	border-radius: 10px;
 	float: right;
@@ -90,6 +98,8 @@ button#go {
 
 form {
 	font-size: 20px;
+	height: 176px;
+	margin-top: 37px;
 }
 
 button.seeresult {  /*button seeresult*/
@@ -108,7 +118,7 @@ button.seeresult {  /*button seeresult*/
 }
 
 #final {
-	margin: 100px auto;
+	margin: auto;
 	border: 2px solid black;
 	width: 600px;
 	overflow: hidden;
